@@ -7,7 +7,7 @@ import (
 func main() {
 	logger := slog.Default()
 
-	s := NewServer("localhost:8080", logger)
+	s := NewServer("0.0.0.0:8080", logger)
 
 	err := s.Start()
 

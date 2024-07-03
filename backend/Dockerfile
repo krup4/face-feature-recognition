@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine3.19 AS builder
+FROM golang:1.22-alpine3.19 AS builder
 
 RUN apk update && apk add ca-certificates git gcc g++ libc-dev binutils
 
