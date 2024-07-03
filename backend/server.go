@@ -12,12 +12,12 @@ type Server struct {
 	logger  *slog.Logger
 }
 
-// func NewServer(address string, logger *slog.Logger) *Server {
-// 	return &Server{
-// 		address: address,
-// 		logger:  logger,
-// 	}
-// }
+func NewServer(address string, logger *slog.Logger) *Server {
+	return &Server{
+		address: address,
+		logger:  logger,
+	}
+}
 
 func (s *Server) Start() error {
 	r := mux.NewRouter()
@@ -36,5 +36,5 @@ func (s *Server) Start() error {
 }
 
 func (s *Server) handlePing(w http.ResponseWriter, r *http.Request) {
-	_, _ = w.Write([]byte("ok"))
+	_, _ = w.Write([]byte("pupupu"))
 }
