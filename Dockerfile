@@ -4,10 +4,10 @@ RUN apk update && apk add ca-certificates git gcc g++ libc-dev binutils
 
 WORKDIR /opt
 
-COPY go.mod go.sum ./
+COPY /backend/go.mod /backend/go.sum ./
 RUN go mod download && go mod verify
 
-COPY . .
+COPY ./backend .
 
 RUN go build -o bin/application .
 FROM alpine:3.19 AS runner
