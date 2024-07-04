@@ -43,19 +43,21 @@
             <div class="axis">
                 <img class="spin-img rotate360ccw" src="https://optim.tildacdn.com/tild6461-3264-4031-b239-313935366435/-/format/webp/1b03c2ae-00db-4c20-a.png"></img>
             </div>
-            <form class="upload-form" id="upload-container" method="post" action="http://127.0.0.1:5000/distrib/?page=0"
-                enctype="multipart/form-data">
-                <input class="upload-form__input" type="file" name="file" accept=".json" required>
-                <div class="upload_img">
-                    <svg  width="200" height="200" viewBox="0 0 351 351" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M87.75 304.875H263.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M175.5 246.375H204.75V202.5H241.312L175.5 136.688M175.5 246.375H146.25V202.5H109.688L175.5 136.688" fill="white" />
-                        <path d="M175.5 246.375H204.75V202.5H241.312L175.5 136.688L109.688 202.5H146.25V246.375H175.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </div>
-                <p class="upload-form__title">Выберите или перетащите файлы в эту область</p>
-                
-            </form>
+            <div class="upload_file">
+                <form class="upload-form" id="upload-container" method="post" action="http://127.0.0.1:5000/distrib/?page=0"
+                    enctype="multipart/form-data">
+                    <input class="upload-form__input" type="file" name="file" accept=".json" required>
+                    <div class="upload_img">
+                        <svg  width="200" height="200" viewBox="0 0 351 351" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M87.75 304.875H263.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M175.5 246.375H204.75V202.5H241.312L175.5 136.688M175.5 246.375H146.25V202.5H109.688L175.5 136.688" fill="white" />
+                            <path d="M175.5 246.375H204.75V202.5H241.312L175.5 136.688L109.688 202.5H146.25V246.375H175.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <p class="upload-form__title">Выберите или перетащите файлы в эту область</p>
+                    
+                </form>
+            </div>
         </main>
     </div>
 
