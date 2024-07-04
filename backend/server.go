@@ -8,7 +8,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var tpl = template.Must(template.ParseFiles("./frontend/index.html"))
+var home = template.Must(template.ParseFiles("./frontend/index.html"))
+var second = template.Must(template.ParseFiles("./frontend/second_page.html"))
 
 type Server struct {
 	address string
@@ -26,7 +27,8 @@ func (s *Server) Start() error {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/api/ping", s.HandlePing).Methods("GET")
-	r.HandleFunc("/api/homepage", s.HomePage).Methods("GET")
+	r.HandleFunc("/homepage", s.HomePage).Methods("GET")
+	r.HandleFunc("/secondpage", s.SecondPage).Methods("GET")
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/assets"))))
 	http.Handle("/", r)
@@ -46,5 +48,9 @@ func (s *Server) HandlePing(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) HomePage(w http.ResponseWriter, r *http.Request) {
-	tpl.Execute(w, nil)
+	home.Execute(w, nil)
+}
+
+func (s *Server) SecondPage(w http.ResponseWriter, r *http.Request) {
+	second.Execute(w, nil)
 }
