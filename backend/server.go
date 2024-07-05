@@ -1,15 +1,18 @@
 package main
 
 import (
+	"fmt"
+	"io"
 	"log/slog"
 	"net/http"
+	"os"
 	"text/template"
 
 	"github.com/gorilla/mux"
 )
 
 var home = template.Must(template.ParseFiles("./frontend/index.html"))
-var second = template.Must(template.ParseFiles("./frontend/second_page.html"))
+var second = template.Must(template.ParseFiles("./frontend/view-video.html"))
 
 type Server struct {
 	address string
@@ -28,9 +31,9 @@ func (s *Server) Start() error {
 
 	r.HandleFunc("/api/ping", s.HandlePing).Methods("GET")
 	r.HandleFunc("/homepage", s.HomePage).Methods("GET")
-	r.HandleFunc("/secondpage", s.SecondPage).Methods("GET")
+	r.HandleFunc("/secondpage", s.SecondPage).Methods("POST")
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/assets"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/static/css"))))
 	http.Handle("/", r)
 
 	s.logger.Info("server has been started", "address", s.address)
@@ -52,5 +55,27 @@ func (s *Server) HomePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) SecondPage(w http.ResponseWriter, r *http.Request) {
+	file, handler, err := r.FormFile("video")
+	if err != nil {
+		fmt.Println("Error with reading video: ", err)
+		return
+	}
+
+	defer file.Close()
+
+	filename := handler.Filename
+	dst, err := os.Create(fmt.Sprintf("../%s", filename))
+	if err != nil {
+		fmt.Println("Error with creating new file: ", err)
+		return
+	}
+	defer dst.Close()
+
+	if _, err := io.Copy(dst, file); err != nil {
+		fmt.Println("Error with copying file: ", err)
+		return
+	}
+
+	fmt.Println("Success")
 	second.Execute(w, nil)
 }

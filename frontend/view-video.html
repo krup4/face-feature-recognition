@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анализ зала</title>
-    <link rel="stylesheet" href="./static/style.css">
+    <title>Анализ видео</title>
+    <link rel="stylesheet" href="static/css/style.css">
     <!-- <link rel="stylesheet" href="features.css"> -->
 </head>
 
@@ -76,23 +76,10 @@
         </header>
         <main class="main">
             <div class="container">
-                <img src="static/images/main-logo.png" class="main-logo">
-                <section id="app" class="main__app app">
-                    <form id="swipeImportFile" class="app__import-file import-file --no-swap"
-                        action="http://0.0.0.0:8080/secondpage" method="post">
-                        <input id="fileInput" type="file" class="import-file__input" accept="video/*"
-                            onchange="AddFile()" multiple>
-                        <img src="static/images/import-file.svg" alt=""
-                            class="import-file__img import-file__img--brief">
-                        <p id="importFileDesc" class="import-file__description">Выберите или перетащите
-                            файлы</p>
-                    </form>
-                </section>
+                <video></video>
             </div>
         </main>
     </div>
-
-    <script src="src/AddFile.js"></script>
 
 </body>
 
