@@ -33,7 +33,8 @@ func (s *Server) Start() error {
 	r.HandleFunc("/homepage", s.HomePage).Methods("GET")
 	r.HandleFunc("/secondpage", s.SecondPage).Methods("POST")
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/static/css"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/static"))))
+	http.Handle("/src/", http.StripPrefix("/src/", http.FileServer(http.Dir("frontend/src"))))
 	http.Handle("/", r)
 
 	s.logger.Info("server has been started", "address", s.address)
