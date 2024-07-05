@@ -7,4 +7,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+      - 5050:5050
     command: ./application

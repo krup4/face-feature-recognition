@@ -29,7 +29,7 @@ func (s *Server) Start() error {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/api/ping", s.HandlePing).Methods("GET")
-	r.HandleFunc("/homepage", s.HomePage).Methods("GET")
+	r.HandleFunc("/", s.HomePage).Methods("GET")
 	r.HandleFunc("/api/getInfo", s.GetInfo).Methods("POST")
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -70,7 +70,7 @@ func (s *Server) GetInfo(w http.ResponseWriter, r *http.Request) {
 
 	body := bytes.NewReader(data)
 
-	req, err := http.NewRequest("POST", "http://0.0.0.0:5050/model", body)
+	req, err := http.NewRequest("POST", "http://localhost:5050/analysis-frame", body)
 	if err != nil {
 		fmt.Println("Ошибка при создании запроса:", err)
 		return
