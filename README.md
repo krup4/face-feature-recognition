@@ -33,4 +33,4 @@ Go to `http://127.0.0.1:8080/` and enjoy😊
 - Css in `./web/static/css`
 - Fonts in `./web/static/fonts`
 - Images in `./web/static/images`
-- Java Script files in `./web/src`
+- Java Script files in `./web/src` ![version](https://img.shields.io/badge/version-1.8.5-blue)
