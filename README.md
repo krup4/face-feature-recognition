@@ -23,5 +23,5 @@ Run:
 ```
 make up
 ```
-
-Go to `http://localhost:8080/` and enjoy😊
+<br/>
+Go to `http://127.0.0.1:8080/` and enjoy😊
