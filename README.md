@@ -11,15 +11,18 @@
 .
 
 <h1>Installation</h1>
-Clone this repository:
+Clone this repository: <br/>
 ```
 git clone https://github.com/krup4/face-feature-recognition
 ```
-Go to it:
+<br/>
+Go to it: <br/>
 ```
 cd face-feature-recognition
 ```
+<br/>
 Run:
 ```
 make up
 ```
+<br/>
