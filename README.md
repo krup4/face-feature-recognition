@@ -1,6 +1,6 @@
 # Face Feature Recognition
 <h1 align="center">Hello!<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
-<h4 align="center">This is face feature recognition. This is a neural network that can recognize the gender, age and emotions of people in the freeze frame of the video. (using MiVOLO)</h4>
+<h4 align="center">This is face feature recognition. This is a neural network that can recognize the gender, age and emotions of people in the freeze frame of the video. (using MiVOLO, for GAZPROMBANK.TECH)</h4>
 
 ## Authors
 - <a href="https://github.com/krup4" target="_blank">Krupnov Pavel</a> <br/>
