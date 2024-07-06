@@ -26,3 +26,6 @@ make up
 
 
 Go to `http://127.0.0.1:8080/` and enjoy😊
+
+## Description
+Backend on Go in ./web/app ![version](1.22.4)
