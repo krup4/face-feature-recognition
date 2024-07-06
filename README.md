@@ -11,18 +11,15 @@
 .
 
 ## Installation
-Clone this repository: <br/>
+Clone this repository:
 ```
 git clone https://github.com/krup4/face-feature-recognition
 ```
-<br/>
-Go to it: <br/>
+Go to it: 
 ```
 cd face-feature-recognition
 ```
-<br/>
 Run:
 ```
 make up
 ```
-<br/>
