@@ -12,11 +12,6 @@ services:
       - ./model/analysis_frame.py:/opt/model/analysis_frame.py
     ports:
       - 5050:5050
-    devices:
-      - /dev/nvidia0:/dev/nvidia0
-    environment:
-      NVIDIA_DRIVER_CAPABILITIES: compute,utility
-      NVIDIA_VISIBLE_DEVICES: all
   web:
     container_name: web
     build:
