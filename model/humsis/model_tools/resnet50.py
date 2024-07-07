@@ -20,7 +20,7 @@ class ResNet:
         num_ftrs = self.model.fc.in_features
         self.model.fc = nn.Linear(num_ftrs, num_classes)
         self.model.load_state_dict(torch.load(
-            'models_weight/resnet50_6_20240704_094831.pt'))
+            'models_weight/resnet50_6_20240704_094831.pt', map_location=torch.device(device)))
         self.model = self.model.to(device)
 
     def crops_face(self, image: np.ndarray, bbox: torch.Tensor):

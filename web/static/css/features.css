@@ -11,14 +11,24 @@
 }
 
 .fade-out.hide {
+    position: absolute;
     opacity: 0;
-    height: 0;
     padding: 0;
     margin: 0;
     overflow: hidden;
-    display: none;
 }
 
+.fade-out.hidetl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
 
 .fade-in {
     animation: fade-in 1s ease-out;
@@ -43,4 +53,33 @@
 .zoom .info-file__type {
     width: 100%;
     height: auto;
+}
+
+.bounding-box {
+    position: absolute;
+    border: 5px solid #9c9cd9;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px 0 rgba(162, 172, 228, 0.74);
+}
+
+.bounding-box:hover {
+    border-color: #FFFFFF;
+    box-shadow: 0 4px 10px 0 rgba(162, 172, 228, 0.74);
+}
+
+.info-box {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #9c9cd9;
+    box-shadow: 0 4px 10px 0 rgba(162, 172, 228, 0.74);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.--no-view {
+    display: none;
 }

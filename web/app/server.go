@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"net/http"
 	"text/template"
+	"encoding/json"
 
 	"github.com/gorilla/mux"
 )
@@ -29,7 +30,7 @@ func (s *Server) Start() error {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/api/ping", s.HandlePing).Methods("GET")
-	r.HandleFunc("/homepage", s.HomePage).Methods("GET")
+	r.HandleFunc("/", s.HomePage).Methods("GET")
 	r.HandleFunc("/api/getInfo", s.GetInfo).Methods("POST")
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -70,11 +71,13 @@ func (s *Server) GetInfo(w http.ResponseWriter, r *http.Request) {
 
 	body := bytes.NewReader(data)
 
-	req, err := http.NewRequest("POST", "http://0.0.0.0:5050/model", body)
+	req, err := http.NewRequest("POST", "http://model:5050/analysis-frame", body)
 	if err != nil {
 		fmt.Println("Ошибка при создании запроса:", err)
 		return
 	}
+
+	req.Header.Set("Content-Type", "image/jpeg") 
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
@@ -90,5 +93,8 @@ func (s *Server) GetInfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(string(answ))
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	json.NewEncoder(w).Encode(answ)
 }
