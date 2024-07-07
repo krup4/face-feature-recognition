@@ -8,7 +8,9 @@
 - <a href="https://github.com/alexio2705" target="_blank">Ionchikov Alexander</a><br/>
 
 ## Appearance
-.
+![alt text](https://github.com/krup4/face-feature-recognition/blob/main/appearance/image_2024-07-07_14-39-10.png)
+![alt text](https://github.com/krup4/face-feature-recognition/blob/main/appearance/image_2024-07-07_14-39-09.png)
+![alt text](https://github.com/krup4/face-feature-recognition/blob/main/appearance/image_2024-07-07_14-41-01.png)
 
 ## Installation
 Clone this repository:
