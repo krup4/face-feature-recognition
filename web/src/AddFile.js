@@ -4,8 +4,8 @@ const videoPlayer = document.getElementById('videoPlayer');
 const videoPlayerContainer = document.getElementById('videoPlayerContainer');
 
 const AddFile = () => {
-    inputContainer.classList.add("hide");
-    videoPlayerContainer.classList.remove("hide");
+    inputContainer.classList.add("hidetl");
+    videoPlayerContainer.classList.remove("hidetl");
 
     const file = fileInput.files[0];
 
