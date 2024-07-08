@@ -30,6 +30,7 @@ make up
 Go to `http://127.0.0.1:8080/` and enjoy😊
 
 ## Description
+- Model using torch in `./model`
 - Backend on Go in `./web/app`   ![version](https://img.shields.io/badge/version-1.22.4-blue)
 - Main page on html in `./web`
 - Css in `./web/static/css`
