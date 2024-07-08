@@ -2,8 +2,10 @@ const people = document.getElementById("people")
 const engagement = document.getElementById("engagement")
 const genders = document.getElementById("genders")
 const mage = document.getElementById("mage")
+const loadingModel = document.getElementById("loadingModel")
 
 let cntSendFrame = 0;
+let isPlay = false;
 
 const sendFrame = (frameDataURL, cw, ch) => {
     const url = "http://127.0.0.1:8080/api/getInfo";
@@ -28,7 +30,8 @@ const sendFrame = (frameDataURL, cw, ch) => {
             }
         })
         .then((json) => {
-            if (!cntSendFrame) {
+            if (!cntSendFrame && !isPlay) {
+                loadingModel.classList.add('hide');
                 const data = JSON.parse(atob(json));
                 let p = 0;
                 let i = 0;
@@ -42,23 +45,20 @@ const sendFrame = (frameDataURL, cw, ch) => {
                     if (box['name'] == "face") {
                         createBoundingBox(i, box['boxes'][0], box['boxes'][1], box['boxes'][2], box['boxes'][3], cw, ch);
                         createInfoZone(i, box['age'], box['gender'], box['emotion']);
+                        if (goodE.includes(box['emotion'])) ++e;
+                    } else {
+                        ++p;
                         sAge += parseFloat(box['age']);
                         if (box['gender'] == 'М') ++m;
                         else ++f;
-                        if (goodE.includes(box['emotion'])) ++e;
-                        ++k;
-                    } else {
-                        ++p;
                     }
                     ++i;
                 }
                 if (p) {
                     people.innerText = p;
                     engagement.innerText = e / p * 100 + "%";
-                }
-                if (k) {
                     genders.innerText = m + ' М, ' + f + ' Ж';
-                    mage.innerText = sAge / k;
+                    mage.innerText = sAge / p;
                 }
             }
         })
@@ -79,6 +79,7 @@ const dataURLToBlob = (dataURL) => {
 }
 
 const videoStop = () => {
+    isPlay = false;
     const canvas = document.createElement("canvas");
     canvas.width = videoPlayer.videoWidth;
     canvas.height = videoPlayer.videoHeight;
@@ -88,13 +89,41 @@ const videoStop = () => {
 
     const dataURL = canvas.toDataURL("image/jpeg");
 
+    loadingModel.classList.remove('hide');
+
     sendFrame(dataURL, canvas.width, canvas.height);
 };
 
 const videoPlay = () => {
-    const children = videoPlayerZone.querySelectorAll('div');
-    children.forEach(child => videoPlayerZone.removeChild(child));
+    loadingModel.classList.add('hide');
+
+    isPlay = true;
+
+    const bboxs = videoPlayerZone.querySelectorAll('.bounding-box');
+    bboxs.forEach(child => videoPlayerZone.removeChild(child));
+    const iboxs = videoPlayerZone.querySelectorAll('.info-box');
+    iboxs.forEach(child => videoPlayerZone.removeChild(child));
+
+    people.innerText = '';
     engagement.innerText = '';
     genders.innerText = '';
     mage.innerText = '';
+}
+
+const videoTimeUpdate = () => {
+    if (!isPlay) {
+        loadingModel.classList.add('hide');
+
+        const bboxs = videoPlayerZone.querySelectorAll('.bounding-box');
+        bboxs.forEach(child => videoPlayerZone.removeChild(child));
+        const iboxs = videoPlayerZone.querySelectorAll('.info-box');
+        iboxs.forEach(child => videoPlayerZone.removeChild(child));
+
+        people.innerText = '';
+        engagement.innerText = '';
+        genders.innerText = '';
+        mage.innerText = '';
+
+        videoStop();
+    }
 }

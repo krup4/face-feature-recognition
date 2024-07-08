@@ -8,6 +8,7 @@
     <title>Анализ зала</title>
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/features.css">
+    <link rel="stylesheet" href="static/css/loading.css">
 </head>
 
 <body>
@@ -102,8 +103,15 @@
                     <p id="mage" class="info-values"></p>
                 </div>
                 <div id="videoPlayerZone" class="video-player-zone">
-                    <video id="videoPlayer" class="video-player" onpause="videoStop()" onplay="videoPlay()" controls>
+                    <video id="videoPlayer" class="video-player" onpause="videoStop()" onplay="videoPlay()"
+                        ontimeupdate="videoTimeUpdate()" controls>
                     </video>
+                    <div id="loadingModel" class="loading fade-out hide">
+                        <div class="spinner">
+                            <div class="bubble-1"></div>
+                            <div class="bubble-2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -112,6 +120,7 @@
     <script src="src/AddInfoPersons.js"></script>
     <script src="src/AddFile.js"></script>
     <script src="src/PlayerVideo.js"></script>
+    <script src="src/RandomRotate.js"></script>
 
 </body>
 

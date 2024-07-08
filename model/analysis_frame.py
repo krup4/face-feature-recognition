@@ -17,11 +17,12 @@ _logger = logging.getLogger("inference")
 
 class Config:
     detector_weights = 'models_weight/yolov8x_person_face.pt'
-    checkpoint = 'models_weight/model_imdb_cross_person_4.22_99.46.pth.tar'
+    checkpoint = 'models_weight/mivolo.pth.tar'
+    resnet_weights = 'models_weight/googlenet.pt'
     device = 'cpu'
     with_persons = True
     disable_faces = False
-    draw = True
+    draw = False
 
 
 app = Flask(__name__)

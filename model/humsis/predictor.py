@@ -22,7 +22,7 @@ class Predictor:
             disable_faces=config.disable_faces,
             verbose=verbose,
         )
-        self.emotion_model = ResNet(config.device)
+        self.emotion_model = ResNet(config.resnet_weights, config.device)
         self.draw = config.draw
 
     def recognize(self, image: np.ndarray) -> Tuple[PersonAndFaceResult, Optional[np.ndarray]]:

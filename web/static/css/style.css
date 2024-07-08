@@ -77,7 +77,7 @@ body {
     }
 
     50% {
-        transform: rotate(180deg);
+        transform: rotate(var(--random-angle));
     }
 
     100% {
@@ -91,7 +91,7 @@ body {
     }
 
     50% {
-        transform: rotate(180deg);
+        transform: rotate(var(--random-angle));
     }
 
     100% {
