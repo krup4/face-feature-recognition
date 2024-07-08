@@ -16,7 +16,7 @@ class ResNet:
     def __init__(self, resnet_weights, device='cuda', num_classes=7):
         self.device = device
 
-        self.model = models.googlenet()
+        self.model = models.resnet50()
         num_ftrs = self.model.fc.in_features
         self.model.fc = nn.Linear(num_ftrs, num_classes)
         self.model.load_state_dict(torch.load(

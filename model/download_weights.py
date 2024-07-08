@@ -1,41 +1,42 @@
 import os
-import kagglehub
-import shutil
+import urllib.request
 
-directory = '/opt/model/models_weight'
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+)
+
+directory = os.path.join(os.getcwd(), 'models_weight/')
+
+url = 'https://www.kaggle.com/api/v1/models/krupn0ff/face-feature-recognition/pyTorch/weights/1/download/'
+
 filename1 = "mivolo.pth.tar"
 filename2 = "resnet50.pt"
 filename3 = "yolov8x_person_face.pt"
 
 if os.path.isdir(directory):
-    print("Папка уже существует")
+    logging.info("Папка уже существует")
 else:
     os.makedirs(directory)
-    print("Папка создана")
+    logging.info("Папка создана")
 
-if os.path.exists(directory + filename1):
-    print(f"Файл {filename1} существует!")
+if os.path.exists(os.path.join(directory, filename1)) and os.path.exists(os.path.join(directory, filename2)) and os.path.exists(os.path.join(directory, filename3)):
+    logging.info("Файлы существует!")
 else:
-    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights", filename1)
-    print("Path to model file 1:", path)
-    
-    end = os.path.join(directory, filename1)
+    logging.info("Установка весов!")
 
-    if os.path.isfile(path):
-        shutil.move(path, end)
+    if not os.path.exists(os.path.join(directory, filename1)):
+        urllib.request.urlretrieve(
+            url + filename1, os.path.join(directory, filename1))
 
-    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights", filename2)
-    print("Path to model file 2:", path)
-    
-    end = os.path.join(directory, filename2)
+    if not os.path.exists(os.path.join(directory, filename2)):
+        urllib.request.urlretrieve(
+            url + filename2, os.path.join(directory, filename2))
 
-    if os.path.isfile(path):
-        shutil.move(path, end)
+    if not os.path.exists(os.path.join(directory, filename3)):
+        urllib.request.urlretrieve(
+            url + filename3, os.path.join(directory, filename3))
 
-    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights", filename3)
-    print("Path to model file 3:", path)
-    
-    end = os.path.join(directory, filename3)
-
-    if os.path.isfile(path):
-        shutil.move(path, end)
+    logging.info("Файлы скачаны!")

@@ -12,13 +12,15 @@ import torch
 from humsis.predictor import Predictor
 from timm.utils import setup_default_logging
 
+import download_weights
+
 _logger = logging.getLogger("inference")
 
 
 class Config:
     detector_weights = 'models_weight/yolov8x_person_face.pt'
     checkpoint = 'models_weight/mivolo.pth.tar'
-    resnet_weights = 'models_weight/googlenet.pt'
+    resnet_weights = 'models_weight/resnet50.pt'
     device = 'cpu'
     with_persons = True
     disable_faces = False

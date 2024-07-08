@@ -127,4 +127,3 @@ dmypy.json
 .cph/
 
 models_weight/
-download_weights.sh

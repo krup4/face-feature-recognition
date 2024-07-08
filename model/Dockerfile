@@ -16,6 +16,4 @@ WORKDIR /opt/model
 
 COPY . .
 
-RUN python download_weights.py
-
 CMD ["python", "analysis_frame.py"]

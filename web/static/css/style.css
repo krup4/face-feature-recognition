@@ -65,8 +65,17 @@ body {
     justify-content: space-evenly;
 }
 
+@media (max-width: 1060px) {
+    .main .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px
+    }
+}
+
 .main-logo {
     max-height: 530px;
+    width: auto;
     animation: rotate 7s ease infinite;
     -webkit-animation: rotate 7s ease infinite;
 }
