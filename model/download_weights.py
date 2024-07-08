@@ -2,8 +2,7 @@ import os
 import kagglehub
 import shutil
 
-directory = '/opt/model/models_weight/'
-
+directory = '/opt/model/models_weight'
 filename1 = "mivolo.pth.tar"
 filename2 = "resnet50.pt"
 filename3 = "yolov8x_person_face.pt"
@@ -17,23 +16,26 @@ else:
 if os.path.exists(directory + filename1):
     print(f"Файл {filename1} существует!")
 else:
-    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights")
-    print("Path to model files:", path)
+    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights", filename1)
+    print("Path to model file 1:", path)
     
-    start = os.path.join(path, filename1)
     end = os.path.join(directory, filename1)
 
-    if os.path.isfile(start):
-        shutil.move(start, end)
+    if os.path.isfile(path):
+        shutil.move(path, end)
 
-    start = os.path.join(path, filename2)
+    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights", filename2)
+    print("Path to model file 2:", path)
+    
     end = os.path.join(directory, filename2)
 
-    if os.path.isfile(start):
-        shutil.move(start, end)
+    if os.path.isfile(path):
+        shutil.move(path, end)
 
-    start = os.path.join(path, filename3)
+    path = kagglehub.model_download("krupn0ff/face-feature-recognition/pyTorch/weights", filename3)
+    print("Path to model file 3:", path)
+    
     end = os.path.join(directory, filename3)
 
-    if os.path.isfile(start):
-        shutil.move(start, end)
+    if os.path.isfile(path):
+        shutil.move(path, end)
