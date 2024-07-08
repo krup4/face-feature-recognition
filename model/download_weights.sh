@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directory="/models_weight/"
+directory="./models_weight/"
 
 filename1="mivolo.pth.tar"
 filename2="resnet50.pt"

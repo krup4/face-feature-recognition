@@ -125,3 +125,4 @@ venv.bak/
 dmypy.json
 
 models_weight/
+download_weights.sh

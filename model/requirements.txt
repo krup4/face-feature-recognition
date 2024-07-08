@@ -4,3 +4,4 @@ timm==0.8.13.dev0
 lapx>=0.5.2
 Flask
 opencv-python
+kagglehub
