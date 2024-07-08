@@ -1,0 +1,26 @@
+version: "3"
+services:
+  model:
+    container_name: model
+    build:
+      context: ./model
+      dockerfile: Dockerfile
+    command: python analysis_frame.py
+    volumes:
+      - ./model/humsis/:/opt/model/humsis
+      - ./model/models_weight/:/opt/model/models_weight
+      - ./model/analysis_frame.py:/opt/model/analysis_frame.py
+    ports:
+      - 5050:5050
+  web:
+    container_name: web
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    command: ./application
+    volumes:
+      - ./web/src/:/opt/src
+      - ./web/static/:/opt/static
+      - ./web/index.html:/opt/index.html

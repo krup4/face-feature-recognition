@@ -1,0 +1,7 @@
+huggingface_hub
+ultralytics==8.1.0
+timm==0.8.13.dev0
+lapx>=0.5.2
+Flask
+opencv-python
+kagglehub

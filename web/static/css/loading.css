@@ -1,0 +1,59 @@
+.loading {
+    position: absolute;
+    top: calc(50% - 22.5px);
+    left: calc(50% - 22.5px);
+}
+
+.spinner {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.bubble-1,
+.bubble-2 {
+    position: absolute;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #1616E1;
+    box-shadow: 0 4px 10px 0 rgba(162, 172, 228, 0.74);
+}
+
+.bubble-2 {
+    top: auto;
+    bottom: 0;
+}
+
+.loading .spinner {
+    animation: loadingI 2s linear infinite;
+}
+
+.loading .bubble-1,
+.loading .bubble-2 {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.loading .bubble-2 {
+    animation-delay: -1s;
+}
+
+@keyframes loadingI {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
